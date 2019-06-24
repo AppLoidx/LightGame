@@ -22,8 +22,14 @@ public class TestMoveScript : MonoBehaviour {
 	private Rigidbody2D body;
 	private float rotationY;
 	private bool jump;
+    private Animator animator;
 
-	void Start () 
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    void Start () 
 	{
 		body = GetComponent<Rigidbody2D>();
 		body.fixedAngle = true;
@@ -104,6 +110,23 @@ public class TestMoveScript : MonoBehaviour {
 
 		if(Input.GetKey(leftButton)) horizontal = -1;
 		else if(Input.GetKey(rightButton)) horizontal = 1; else horizontal = 0;
+
+        if (vertical == 1)
+        {
+            animator.SetBool("jump", true);
+        }
+        else
+        {
+            animator.SetBool("jump", false);
+            if (horizontal == 1 || horizontal == -1)
+            {
+                animator.SetBool("walk", true);
+            }
+            else
+            {
+                animator.SetBool("walk", false);
+            }
+        }
 
 		if(projectAxis == ProjectAxis.onlyX) 
 		{

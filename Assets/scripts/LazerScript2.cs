@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class LazerScript2 : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject lineGeneratorPrefab;
+    private GameObject lineHolder;
+    private LineRenderer renderFromHolder;
+
     public int maxReflectionCount = 5;
     public float maxStepDistance = 2;
     private LineRenderer lineRenderer;
@@ -12,6 +17,7 @@ public class LazerScript2 : MonoBehaviour
     private Transform transform;
     private float lastZRot = -999;
     private float startZScale;
+    public KeyCode lazerBeam = KeyCode.E;
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -23,24 +29,33 @@ public class LazerScript2 : MonoBehaviour
     private void Start()
     {
         startZScale = transform.transform.localScale.z; 
+        lineHolder = Instantiate(lineGeneratorPrefab);
+        renderFromHolder = lineHolder.GetComponent<LineRenderer>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 direction = target - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         RotateLazer(angle);
-
-        DrawPredictedReflectionPattern(this.transform.position, this.transform.right, maxReflectionCount, new GameObject[] {null }, new Vector3[] { transform.position});
+        if (Input.GetKey(lazerBeam)) DrawPredictedReflectionPattern(this.transform.position, this.transform.right, maxReflectionCount, new GameObject[] {null }, new Vector3[] { transform.position});
+        else
+        {
+            Destroy(lineHolder);
+            lineHolder = Instantiate(lineGeneratorPrefab);
+            renderFromHolder = lineHolder.GetComponent<LineRenderer>();
+        }
     }
 
     private void DrawPredictedReflectionPattern(Vector3 position, Vector3 direction, int reflectionsRemaining, GameObject[] gameObjects, Vector3[] positions)
     {
         if (reflectionsRemaining == 0)
         {
-            lineRenderer.positionCount = positions.Length;
-            lineRenderer.SetPositions(positions);
+
+            renderFromHolder.positionCount = positions.Length;
+            renderFromHolder.SetPositions(positions);
+
             return;
         }
         Vector3 startingPosition = position;

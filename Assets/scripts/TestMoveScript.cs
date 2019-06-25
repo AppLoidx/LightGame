@@ -80,7 +80,8 @@ public class TestMoveScript : MonoBehaviour {
 			if(Input.GetKey(addForceButton) && jump)
 			{
 				body.velocity = new Vector2(0, addForce);
-			}
+                animator.SetBool("jump", true);
+            }
 		}
 	}
 
@@ -113,7 +114,7 @@ public class TestMoveScript : MonoBehaviour {
 
         if (vertical == 1)
         {
-            animator.SetBool("jump", true);
+            
         }
         else
         {

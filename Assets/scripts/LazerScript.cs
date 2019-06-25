@@ -15,7 +15,7 @@ public class LazerScript : MonoBehaviour
 
     private void Update()
     {
-        Vector3 endPosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y) * _laserLength;
+        Vector3 endPosition = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y) * _laserLength;
 
         RaycastHit2D[] hits = new RaycastHit2D[1];
 

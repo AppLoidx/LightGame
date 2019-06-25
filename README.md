@@ -1,7 +1,7 @@
 # LightGame
 Simple game for Unity 2D with reflections
 <br><br>
-![](https://i.ibb.co/kmLH3YM/2019-06-24-13-10-20.png)
+![](https://i.ibb.co/dBGQ2fb/2019-06-24-23-11-41.png)
 
 <br><br>
 **Collaborators :**

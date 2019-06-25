@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - block
+  - diamond
+  - mirror
   layers:
   - Default
   - TransparentFX

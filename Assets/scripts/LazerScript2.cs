@@ -13,17 +13,16 @@ public class LazerScript2 : MonoBehaviour
     public float maxStepDistance = 2;
     private LineRenderer lineRenderer;
     private GameObject lastTouchedObject = null;
-    private Transform lastTransform;
     private Transform transform;
     private float lastZRot = -999;
     private float startZScale;
     public KeyCode lazerBeam = KeyCode.E;
+
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
         lastTouchedObject = new GameObject();
         transform = GetComponent<Transform>();
-        lastTransform = transform;
     }
 
     private void Start()
@@ -39,6 +38,7 @@ public class LazerScript2 : MonoBehaviour
         Vector3 direction = target - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         RotateLazer(angle);
+
         if (Input.GetKey(lazerBeam)) DrawPredictedReflectionPattern(this.transform.position, this.transform.right, maxReflectionCount, new GameObject[] {null }, new Vector3[] { transform.position});
         else
         {
@@ -64,7 +64,7 @@ public class LazerScript2 : MonoBehaviour
 
         bool hitOldObj = false;
         GameObject[] tempArray = new GameObject[gameObjects.Length + 1];
-        if (hit)
+        if (hit )
         {          
             for (int i = 0; i < gameObjects.Length; i++)
             {
@@ -75,6 +75,7 @@ public class LazerScript2 : MonoBehaviour
                     }
                 tempArray.SetValue(gameObjects[i], i);
             }
+
         }
     
         
@@ -103,7 +104,15 @@ public class LazerScript2 : MonoBehaviour
         }
         newVector.SetValue(position, newVector.Length - 1);
 
-        DrawPredictedReflectionPattern(position, direction, reflectionsRemaining - 1, gameObjects, newVector);
+        if (hit.transform.gameObject.tag.Equals("diamond") || hit.transform.transform.tag.Equals("Ground"))
+        {
+            if (hit.transform.gameObject.tag.Equals("diamond")) Destroy(hit.transform.gameObject);
+            DrawPredictedReflectionPattern(position, direction, 0, gameObjects, newVector);
+        }
+        else
+        {
+            DrawPredictedReflectionPattern(position, direction, reflectionsRemaining - 1, gameObjects, newVector);
+        }
     }
 
     private void RotateLazer(float angle)

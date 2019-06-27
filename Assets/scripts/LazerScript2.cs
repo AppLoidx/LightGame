@@ -16,7 +16,7 @@ public class LazerScript2 : MonoBehaviour
     private Transform transform;
     private float lastZRot = -999;
     private float startZScale;
-    public KeyCode lazerBeam = KeyCode.E;
+    public KeyCode lazerBeam = KeyCode.Mouse1;
 
     private void Awake()
     {

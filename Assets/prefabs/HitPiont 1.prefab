@@ -79,7 +79,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.06666756
+        value: 0.19709969
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -91,19 +91,19 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.5882353, g: 0.34901962, b: 0.6901961, a: 1}
+      key1: {r: 0.6156863, g: 0.20784315, b: 0.627451, a: 1}
+      key2: {r: 0.9960785, g: 0.9215687, b: 0.9960785, a: 0}
+      key3: {r: 0.9960785, g: 0.9215687, b: 0.9960785, a: 0}
+      key4: {r: 0.9960785, g: 0.9215687, b: 0.9960785, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
+      ctime2: 65535
+      ctime3: 65535
+      ctime4: 65535
       ctime5: 0
       ctime6: 0
       ctime7: 0

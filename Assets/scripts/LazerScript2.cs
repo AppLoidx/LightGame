@@ -39,7 +39,7 @@ public class LazerScript2 : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         RotateLazer(angle);
 
-        if (Input.GetKey(lazerBeam)) DrawPredictedReflectionPattern(this.transform.position, this.transform.right, maxReflectionCount, new GameObject[] { null }, new Vector3[] { transform.position });
+        if (Input.GetKey(lazerBeam)) DrawPredictedReflectionPattern(this.transform.position, this.transform.right, maxReflectionCount, null , new Vector3[] { transform.position });
         else
         {
             Destroy(lineHolder);
@@ -48,7 +48,7 @@ public class LazerScript2 : MonoBehaviour
         }
     }
 
-    private void DrawPredictedReflectionPattern(Vector3 position, Vector3 direction, int reflectionsRemaining, GameObject[] gameObjects, Vector3[] positions)
+    private void DrawPredictedReflectionPattern(Vector3 position, Vector3 direction, int reflectionsRemaining, GameObject gameObject, Vector3[] positions)
     {
         if (reflectionsRemaining == 0)
         {
@@ -63,32 +63,28 @@ public class LazerScript2 : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(position, direction);
 
         bool hitOldObj = false;
-        GameObject[] tempArray = new GameObject[gameObjects.Length + 1];
         if (hit)
         {
-            for (int i = 0; i < gameObjects.Length; i++)
-            {
-                if (gameObjects[i] != null)
-                    if (hit.transform.gameObject.Equals(gameObjects[i]) && !hitOldObj)
+                if (gameObject != null)
+                    if (hit.transform.gameObject.Equals(gameObject) && !hitOldObj)
                     {
                         hitOldObj = true;
                     }
-                tempArray.SetValue(gameObjects[i], i);
-            }
-
-        }
+           }
 
 
 
-        if (hit && (!hitOldObj || System.Math.Round(transform.rotation.z) != System.Math.Round(lastZRot)))
+
+
+        if (hit && (!hitOldObj || System.Math.Round(transform.rotation.z) != System.Math.Round(lastZRot)) && !hit.transform.gameObject.tag.Equals("Player"))
         {
             lastTouchedObject = hit.transform.gameObject;
-            tempArray.SetValue(hit.transform.gameObject, tempArray.Length - 1);
-            gameObjects = tempArray;
+            gameObject = hit.transform.gameObject;
+
             direction = Vector3.Reflect(direction, hit.normal);
             position = hit.point;
 
-            if (System.Math.Round(transform.rotation.z) != System.Math.Round(lastZRot)) gameObjects = new GameObject[] { null };
+            if (System.Math.Round(transform.rotation.z) != System.Math.Round(lastZRot)) gameObject = null;
         }
         else
         {
@@ -104,14 +100,14 @@ public class LazerScript2 : MonoBehaviour
         }
         newVector.SetValue(position, newVector.Length - 1);
 
-        if (hit.transform.gameObject.tag.Equals("diamond") || hit.transform.transform.tag.Equals("Ground"))
+        if (hit.transform!=null && (hit.transform.gameObject.tag.Equals("diamond") || hit.transform.transform.tag.Equals("Ground")))
         {
             if (hit.transform.gameObject.tag.Equals("diamond")) Destroy(hit.transform.gameObject);
-            DrawPredictedReflectionPattern(position, direction, 0, gameObjects, newVector);
+            DrawPredictedReflectionPattern(position, direction, 0, gameObject, newVector);
         }
         else
         {
-            DrawPredictedReflectionPattern(position, direction, reflectionsRemaining - 1, gameObjects, newVector);
+            DrawPredictedReflectionPattern(position, direction, reflectionsRemaining - 1, gameObject, newVector);
         }
     }
 

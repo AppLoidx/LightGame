@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6273539046395713823
+--- !u!1 &4157721497357096191
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6273539046395713820}
-  - component: {fileID: 6273539046395713818}
-  - component: {fileID: 6273539046395713821}
+  - component: {fileID: 4157721497357096189}
+  - component: {fileID: 4157721497357096188}
   m_Layer: 0
-  m_Name: Lazer (1)
+  m_Name: MirrorLineWrapper
   m_TagString: Untagged
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6273539046395713820
+--- !u!4 &4157721497357096189
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6273539046395713823}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.27, y: 0.88, z: 0.06}
-  m_LocalScale: {x: 2.640264, y: 2.6188774, z: 1}
+  m_GameObject: {fileID: 4157721497357096191}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2682073, y: -1.2107688, z: -0.15625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!120 &6273539046395713818
+--- !u!120 &4157721497357096188
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6273539046395713823}
+  m_GameObject: {fileID: 4157721497357096191}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -79,8 +78,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.07246375
+        time: 0.0031738281
+        value: 0.057971954
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -127,20 +126,3 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &6273539046395713821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6273539046395713823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3329eb62438721f4ea71b10123561d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lineGeneratorPrefab: {fileID: 8244396666517926069, guid: d713b66f7c6f8e941b85ebdd36349d7d,
-    type: 3}
-  maxReflectionCount: 15
-  maxStepDistance: 2
-  lazerBeam: 323

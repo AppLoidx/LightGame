@@ -27,7 +27,7 @@ public class LazerScript2 : MonoBehaviour
 
     private void Start()
     {
-        startZScale = transform.transform.localScale.z; 
+        startZScale = transform.transform.localScale.z;
         lineHolder = Instantiate(lineGeneratorPrefab);
         renderFromHolder = lineHolder.GetComponent<LineRenderer>();
     }
@@ -39,7 +39,7 @@ public class LazerScript2 : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         RotateLazer(angle);
 
-        if (Input.GetKey(lazerBeam)) DrawPredictedReflectionPattern(this.transform.position, this.transform.right, maxReflectionCount, new GameObject[] {null }, new Vector3[] { transform.position});
+        if (Input.GetKey(lazerBeam)) DrawPredictedReflectionPattern(this.transform.position, this.transform.right, maxReflectionCount, new GameObject[] { null }, new Vector3[] { transform.position });
         else
         {
             Destroy(lineHolder);
@@ -64,8 +64,8 @@ public class LazerScript2 : MonoBehaviour
 
         bool hitOldObj = false;
         GameObject[] tempArray = new GameObject[gameObjects.Length + 1];
-        if (hit )
-        {          
+        if (hit)
+        {
             for (int i = 0; i < gameObjects.Length; i++)
             {
                 if (gameObjects[i] != null)
@@ -77,8 +77,8 @@ public class LazerScript2 : MonoBehaviour
             }
 
         }
-    
-        
+
+
 
         if (hit && (!hitOldObj || System.Math.Round(transform.rotation.z) != System.Math.Round(lastZRot)))
         {

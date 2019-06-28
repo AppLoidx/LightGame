@@ -100,10 +100,20 @@ public class LazerScript2 : MonoBehaviour
         }
         newVector.SetValue(position, newVector.Length - 1);
 
-        if (hit.transform!=null && (hit.transform.gameObject.tag.Equals("diamond") || hit.transform.transform.tag.Equals("Ground")))
+        if (hit.transform != null && (hit.transform.gameObject.tag.Equals("diamond")
+            || hit.transform.transform.tag.Equals("Ground") || hit.transform.gameObject.tag.Equals("block")
+            /*|| hit.transform.gameObject.tag.Equals("mirror")*/))
         {
             if (hit.transform.gameObject.tag.Equals("diamond")) Destroy(hit.transform.gameObject);
-            DrawPredictedReflectionPattern(position, direction, 0, gameObject, newVector);
+            //if (hit.transform.gameObject.tag.Equals("mirror"))
+            //{
+            //    MirrorScript ms = hit.transform.gameObject.GetComponent<MirrorScript>();
+            //    ms.normal = Vector3.Reflect(hit.point, hit.normal);
+            //    ms.hitPoint = hit.point;
+            //    ms.isNormalRendered = true;
+            //    DrawPredictedReflectionPattern(position, direction, reflectionsRemaining - 1, gameObject, newVector);
+            //} else
+                DrawPredictedReflectionPattern(position, direction, 0, gameObject, newVector);
         }
         else
         {

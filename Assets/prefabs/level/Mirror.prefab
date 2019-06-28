@@ -110,5 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 30
+  lineGeneratorPrefab: {fileID: 4157721497357096191, guid: 2c1f0093ae689e94ab381b85dbf19c1f,
+    type: 3}
   isNormalRendered: 0
   normal: {x: 0, y: 0, z: 0}
+  hitPoint: {x: 0, y: 0, z: 0}

@@ -6,28 +6,31 @@ public class MirrorScript : MonoBehaviour
 {
     public float angle = 30;
     private Transform transform;
-    //[SerializeField]
-    //private GameObject lineGeneratorPrefab;
+    [SerializeField]
+    private GameObject lineGeneratorPrefab;
     public bool isNormalRendered = false;
     public Vector3 normal = new Vector3();
-    //private GameObject lineHolder;
+    public Vector3 hitPoint = new Vector3();
+    private GameObject lineHolder;
     private void Update()
     {
-        
-        //if (isNormalRendered)
-        //{
-            
-        //    LineRenderer lr = lineHolder.GetComponent<LineRenderer>();
-        //    //lr.SetPosition(0, transform.position);
-        //    //lr.SetPosition(1, normal);
-        //} else
-        //{
-        //}
+
+        if (isNormalRendered)
+        {
+
+            LineRenderer lr = lineHolder.GetComponent<LineRenderer>();
+
+            lr.SetPosition(0, hitPoint);
+            lr.SetPosition(1, normal);
+        }
+        else
+        {
+        }
     }
 
     private void Awake()
     {
-        //lineHolder = Instantiate(lineGeneratorPrefab);
+        lineHolder = Instantiate(lineGeneratorPrefab);
         transform = GetComponent<Transform>();
     }
     private void OnMouseDown()
